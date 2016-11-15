@@ -69,3 +69,44 @@ Exercise 1.12
   )
 )
 
+Exercise 1.13
+exponential in both time and space
+
+Exercise 1.15
+a 41 times 
+b space and time is both linear
+
+Exercise 1.16
+(define (fast-expt b n)
+  (fast-iter b n 1)
+)
+
+(define (fast-iter b n t)
+  (cond ((= n 0) t)
+        ((even? n) (fast-iter (* b b) (/ n 2) t))
+        (else (fast-iter b (- n 1) (* b t)))
+  )
+)
+
+Exercise 1.17
+(define (half a)
+  (/ a 2)
+)
+
+(define (multiply a b)
+  (multiply-log a b 0)
+)
+
+(define (multiply-log a b total)
+  (cond ((= a 0) (* b total))
+        ((even? a) (multiply-log (half a) b (+ total (half a))))
+        (else (multiply-log (- a 1) b (+ total 1)))
+  )
+)
+
+Exercise 1.20
+In both normal order and applicative order execution remainder would be required to be called 4 times. 
+
+Exercise 1.26
+expmod is now called twice and then multiplied, instead of once and then multiplied by itself
+
