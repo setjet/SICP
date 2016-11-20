@@ -33,5 +33,51 @@ Exercise 2.2
    (display ")"))
 
 
+Exercise 2.4
+(define (cdr z) (z (lambda (p q) q)))
 
-    
+Exercise 2.6
+(define one (lambda (f) (lambda (x) (f x))))
+(define two (lambda (f) (lambda (x) (f (f x)))))
+
+(define (plus m n)
+  (lambda (f) (lambda (x) ((m f) ((n f) x))))
+)
+
+Exercise 2.7
+(define (lower-bound interval) (car interval))
+(define (upper-bound interval) (cdr interval))
+
+Exercise 2.8
+(define sub-interval x y)
+  (make-interval (- (lower-bound x) (higher-bound y))
+                 (- (upper-bound x) (lower-bound y))
+  )
+)
+
+Exercise 2.10
+(define (div-interval x y)
+  (if (or (= 0 (lower-bound y)) (= 0 (upper-bound y)))
+      (display "Cannot divide by 0")
+      (mul-interval x
+                    (make-interval (/ 1.0 (upper-bound y)) 
+                                   (/ 1.0 (upper-bound y))
+                    )
+      )
+  )
+)                             
+
+Exercise 2.12
+(define (make-center-percent c p)
+  (make-interval (- (center c) (* p (center c)))
+                 (+ (center c) (* p (center c)))
+  )
+)
+
+(define (percent interval)
+  (/ (upper-bound interval) (center interval))
+)
+
+Exercise 2.14-2.16
+She is right because r1 and r2 are used more often in par1. As a result, any uncertainty in r1 and r2 are amplified
+
